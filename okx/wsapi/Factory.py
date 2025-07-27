@@ -8,6 +8,7 @@ import websockets
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("WebSocketFactory")
 
+
 class WebSocketFactory:
 
     def __init__(self, url):

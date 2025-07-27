@@ -1,5 +1,6 @@
 # coding=utf-8
 
+
 class OkxApiException(Exception):
 
     def __init__(self, response):
@@ -7,21 +8,23 @@ class OkxApiException(Exception):
         try:
             json_res = response.json()
         except ValueError:
-            self.message = 'Invalid JSON error message from Okx: {}'.format(response.text)
+            self.message = "Invalid JSON error message from Okx: {}".format(
+                response.text
+            )
         else:
             if "code" in json_res.keys() and "msg" in json_res.keys():
-                self.code = json_res['code']
-                self.message = json_res['msg']
+                self.code = json_res["code"]
+                self.message = json_res["msg"]
             else:
-                self.code = 'None'
-                self.message = 'System error'
+                self.code = "None"
+                self.message = "System error"
 
         self.status_code = response.status_code
         self.response = response
-        self.request = getattr(response, 'request', None)
+        self.request = getattr(response, "request", None)
 
     def __str__(self):  # pragma: no cover
-        return 'API Request Error(code=%s): %s' % (self.code, self.message)
+        return "API Request Error(code=%s): %s" % (self.code, self.message)
 
 
 class OkxRequestException(Exception):
@@ -30,7 +33,7 @@ class OkxRequestException(Exception):
         self.message = message
 
     def __str__(self):
-        return 'OkxRequestException: %s' % self.message
+        return "OkxRequestException: %s" % self.message
 
 
 class OkxParamsException(Exception):
@@ -39,4 +42,4 @@ class OkxParamsException(Exception):
         self.message = message
 
     def __str__(self):
-        return 'OkxParamsException: %s' % self.message
+        return "OkxParamsException: %s" % self.message

@@ -1,10 +1,10 @@
 import setuptools
 
-with open("README.md", "r",encoding="utf-8") as fh:
+with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
-    
-VERSION = '5.4.1001'
-DESCRIPTION = 'Up-to-date, most-complete, well-organized, well-documented, easy-to-use OKX Exchange Rest and Websocket API SDK for Python'
+
+VERSION = "5.4.1001"
+DESCRIPTION = "Up-to-date, most-complete, well-organized, well-documented, easy-to-use OKX Exchange Rest and Websocket API SDK for Python"
 
 setuptools.setup(
     name="okx-sdk",
@@ -27,21 +27,22 @@ setuptools.setup(
         "keyring",
         "requests",
         "Twisted",
-        "pyOpenSSL"
+        "pyOpenSSL",
     ],
     keywords=[
-        'okx',
-        'crypto',
-        'exchange',
-        'api',
-        'sdk',
-        'stream',
-        'websocket',
-        'ws',
-        'python',
-        'bitcoin',
-        'btc',
-        'spot',
-        'futures',
-        'trade'],
+        "okx",
+        "crypto",
+        "exchange",
+        "api",
+        "sdk",
+        "stream",
+        "websocket",
+        "ws",
+        "python",
+        "bitcoin",
+        "btc",
+        "spot",
+        "futures",
+        "trade",
+    ],
 )

@@ -36,10 +36,7 @@ class PrivateAsyncClient:
         logRes = await self.login()
         await asyncio.sleep(5)
         if logRes:
-            payload = json.dumps({
-                "op": "subscribe",
-                "args": params
-            })
+            payload = json.dumps({"op": "subscribe", "args": params})
             await self.websocket.send(payload)
         await self.consume()
 
@@ -48,17 +45,14 @@ class PrivateAsyncClient:
             apikey=self.apikey,
             apisecret=self.apisecret,
             passphrase=self.passphrase,
-            use_server_time=self.use_server_time
+            use_server_time=self.use_server_time,
         )
         await self.websocket.send(loginPayload)
         return True
 
     async def unsubscribe(self, params: list, callback):
         self.callback = callback
-        payload = json.dumps({
-            "op": "unsubscribe",
-            "args": params
-        })
+        payload = json.dumps({"op": "unsubscribe", "args": params})
         logger.info(f"unsubscribe: {payload}")
         await self.websocket.send(payload)
         # for param in params:

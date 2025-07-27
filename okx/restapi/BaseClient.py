@@ -9,8 +9,17 @@ from .. import utils
 
 class OkxBaseClient(Client):
 
-    def __init__(self, apikey='', apisecret='', passphrase='', 
-                 use_server_time=False, simulation=False, base_api=API_URL, debug=False, proxy=None):
+    def __init__(
+        self,
+        apikey="",
+        apisecret="",
+        passphrase="",
+        use_server_time=False,
+        simulation=False,
+        base_api=API_URL,
+        debug=False,
+        proxy=None,
+    ):
         super().__init__(base_url=base_api, http2=True, proxy=proxy)
         self.API_KEY = apikey
         self.API_SECRET_KEY = apisecret
@@ -33,17 +42,26 @@ class OkxBaseClient(Client):
 
         body = json.dumps(params) if method == POST else ""
 
-        if self.API_KEY != '' and self.API_SECRET_KEY != '':
-            signature = utils.sign(utils.pre_hash(timestamp, method, request_path, str(body), self.debug),
-                                   self.API_SECRET_KEY)
-            header = utils.get_header(self.API_KEY, signature, timestamp, self.PASS_PHRASE, self.simulation, self.debug)
+        if self.API_KEY != "" and self.API_SECRET_KEY != "":
+            signature = utils.sign(
+                utils.pre_hash(timestamp, method, request_path, str(body), self.debug),
+                self.API_SECRET_KEY,
+            )
+            header = utils.get_header(
+                self.API_KEY,
+                signature,
+                timestamp,
+                self.PASS_PHRASE,
+                self.simulation,
+                self.debug,
+            )
         else:
             header = utils.get_header_no_sign(self.simulation, self.debug)
 
         response = None
         if self.debug:
-            print('domain:', self.domain)
-            print('url:', request_path)
+            print("domain:", self.domain)
+            print("url:", request_path)
         if method == GET:
             response = self.get(request_path, headers=header)
         elif method == POST:
@@ -54,7 +72,7 @@ class OkxBaseClient(Client):
         request_path = API_URL + SYSTEM_TIME
         response = self.get(request_path)
         if response.status_code == 200:
-            return response.json()['data'][0]['ts']
+            return response.json()["data"][0]["ts"]
         else:
             return ""
 
