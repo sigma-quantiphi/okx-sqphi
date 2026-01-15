@@ -19,7 +19,7 @@ OK_ACCESS_TIMESTAMP = "OK-ACCESS-TIMESTAMP"
 OK_ACCESS_PASSPHRASE = "OK-ACCESS-PASSPHRASE"
 
 # Broker Id
-BROKER_ID = "538a3965e538BCDE"
+BROKER_ID = None
 
 # Trading Account Endpoints
 ACCOUNT_BALANCE = "/api/v5/account/balance"
@@ -108,6 +108,7 @@ TRADE_ORDERS_ALGO_HISTORY = "/api/v5/trade/orders-algo-history"
 
 # Order Book Trading >> Grid Trading Endpoints
 GRID_ORDER_ALGO = "/api/v5/tradingBot/grid/order-algo"
+GRID_AMEND_ORDER_ALGO_BASIC = "/api/v5/tradingBot/grid/amend-order-algo-basic-param"
 GRID_AMEND_ORDER_ALGO = "/api/v5/tradingBot/grid/amend-order-algo"
 GRID_STOP_ORDER_ALGO = "/api/v5/tradingBot/grid/stop-order-algo"
 GRID_CLOSE_POSITION = "/api/v5/tradingBot/grid/close-position"
