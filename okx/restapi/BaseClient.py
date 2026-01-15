@@ -3,7 +3,6 @@ import datetime
 from httpx import Client
 
 from ..constants import *
-from .. import exceptions
 from .. import utils
 
 
